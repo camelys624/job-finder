@@ -4,9 +4,10 @@ import { JobFilters } from "@/components/job-filters";
 import { Card } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useEffect, useState } from "react";
+import { JobWithRelations } from "@/types/job";
 
 const JobsPage = () => {
-  const [jobs, setJobs] = useState([{}, {}, {}, {}, {}]);
+  const [jobs, setJobs] = useState<JobWithRelations[]>([]);
   const [loading, setLoading] = useState(true);
   const handleFilterChange = (filters: {
     type?: string;
@@ -42,18 +43,18 @@ const JobsPage = () => {
     <div className="container flex flex-col items-center">
       <JobFilters onFilterChange={handleFilterChange} />
       <div className="w-full mt-8 flex flex-col gap-6">
-        {jobs.map((job: any) =>
-          loading ? (
-            <Card className="flex flex-col space-y-3 rounded-lg p-6">
+        {loading ? (
+          Array.from({ length: 5 }).map((_, index) => (
+            <Card key={index} className="flex flex-col space-y-3 rounded-lg p-6">
               <Skeleton className="h-6 w-full rounded-xl" />
               <div className="space-y-4">
                 <Skeleton className="h-4 w-[550px]" />
                 <Skeleton className="h-4 w-[200px]" />
               </div>
             </Card>
-          ) : (
-            <JobCard key={job.id} job={job} />
-          )
+          ))
+        ) : (
+          jobs.map((job) => <JobCard key={job.id} job={job} />)
         )}
       </div>
     </div>

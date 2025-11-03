@@ -2,6 +2,7 @@ import { authOptions } from "@/lib/auth";
 import { NextResponse } from "next/server";
 import { getServerSession } from "next-auth";
 import { prisma } from "@/lib/prisma";
+import { Prisma } from "@/app/generated/prisma";
 
 export async function GET(request: Request) {
   try {
@@ -10,7 +11,7 @@ export async function GET(request: Request) {
     const location = searchParams.get("location");
     const search = searchParams.get("search");
 
-    const where: any = {};
+    const where: Prisma.JobWhereInput = {};
 
     if (type) {
       where.type = type;

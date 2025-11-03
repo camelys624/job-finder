@@ -124,7 +124,7 @@ export default function DashboardPage() {
       <div className="mb-8">
         <h1 className="text-3xl font-bold tracking-tight">Dashboard</h1>
         <p className="text-muted-foreground">
-          Welcome back, {session?.user?.name || "User"}! Here's your job application overview.
+          Welcome back, {session?.user?.name || "User"}! Here&apos;s your job application overview.
         </p>
       </div>
 
@@ -138,7 +138,7 @@ export default function DashboardPage() {
           <CardContent>
             <div className="text-2xl font-bold">{stats?.jobsPosted || 0}</div>
             <p className="text-xs text-muted-foreground mt-1">
-              Jobs you've created
+              Jobs you&apos;ve created
             </p>
           </CardContent>
         </Card>
@@ -151,7 +151,7 @@ export default function DashboardPage() {
           <CardContent>
             <div className="text-2xl font-bold">{stats?.applicationsCount || 0}</div>
             <p className="text-xs text-muted-foreground mt-1">
-              Jobs you've applied to
+              Jobs you&apos;ve applied to
             </p>
           </CardContent>
         </Card>

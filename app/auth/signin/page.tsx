@@ -42,7 +42,7 @@ const SignInPage = () => {
       } else if (result?.ok) {
         router.push('/')
       }
-    } catch (err) {
+    } catch {
       setError('登录过程中发生错误，请重试')
     } finally {
       setIsLoading(false)
